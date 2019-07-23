@@ -1,0 +1,9 @@
+vendor/
+composer.lock
+
+settings
+deploy.bat
+deploy.php
+tests/run.bat
+tests/password
+src/Api.php.original
