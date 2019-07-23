@@ -21,11 +21,11 @@ require "vendor/autoload.php";
 $peggyForms = new PeggyForms\Api("myApiKey", PeggyForms::EndPointPeggyForms);
 ```
 
-Endpoints:
-| Product		| Endpoints	|
-| ------------- | ------------ |
-| PeggyForms 	| PeggyForms\EndPointPeggyForms |
-| PeggyPay 		| PeggyForms\EndPointPeggyPay |
+### Endpoints:
+| Product  | Endpoint constant |
+| ------------- | ------------- |
+| PeggyForms | PeggyForms\EndPointPeggyForms |
+| PeggyPay | PeggyForms\EndPointPeggyPay |
 
 ## Get submission by hash
 
