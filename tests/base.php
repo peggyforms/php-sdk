@@ -20,7 +20,7 @@
 			$hash = $this->settings->submissionHash;
 			$apiKey = $this->settings->apiKey;
 
-			$this->api = new PeggyForms\Api($apiKey);
+			$this->api = new PeggyForms\Api($apiKey, "http://formbuilder.local.nl/api");
 		}
 
 		// Formbuilder methods

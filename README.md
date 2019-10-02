@@ -92,19 +92,18 @@ You can validate your form fields using the default validation tools in the edit
 When you need custom valdation, you can use [Javascript](https://www.peggyforms.com/features/javascript-api#validation).
 Or you can setup to validate via an HTTP request. This example is for validating a field via an HTTP request.
 
+[Screenshot example](https://www.peggyforms.com/app/images/content/sdk-validation.png)
 [Read more](https://www.peggyforms.com/features/inputvalidation)
-
-SCREENSHOTTODO HOWTO in peggy
 
 ```php
 // Value of the field with the validation
 $value = $peggyForms->get->param("value");
 
 // Other fields you added as parameters
-$yourFormField1 = (int)$peggyForms->get->param("yourFormField1");
-$yourFormField2 = (int)$peggyForms->get->param("yourFormField2");
+$yourFormField1 = $peggyForms->get->param("formfield-1-name");
+$yourFormField2 = $peggyForms->get->param("formfield-2-name");
 
-$validated = your_function($yourFormField1, $yourFormField2);
+$validated = your_function($value, $yourFormField1, $yourFormField2);
 
 if ($validated === true) {
 	$status = \PeggyForms\Constants\Validation::OK;
@@ -125,14 +124,29 @@ $peggyForms->response->validation(
 ### Populate the Ajax Proxy field
 
 The Ajax Proxy field can be very useful if you have 1 web service which provides multiple data sets.
+For example, if your API call returns a list of products and a list of countries, the AJAX proxy field is very useful.
 Only 1 HTTP request will be made and all the dependent fields will use this result as data source.
+
+In this example we use typeless objects, but you can use any JSON-serializable object.
 
 ```php
 $peggyForms->response->ajaxProxy(
 	true,
 	[
-		"dataSet1" => [], // .. complete dataset
-		"dataSet2" => [] // .. complete dataset
+		"products" => [
+			(object)[
+				"id" => 1,
+				"name" => "My product 1"
+			],
+			..
+		],
+		"countries" => [
+			(object)[
+				"id" => 1,
+				"name" => "The Netherlands"
+			],
+			..
+		]
 	]
 );
 ```
@@ -141,9 +155,8 @@ $peggyForms->response->ajaxProxy(
 
 This example reacts on the POST submit action. The hash of the submission will always be added as 'submissionHash'.
 
-Use your custom props in your thanks page or email body by writing `{POST:data.StatusMessage}`
-
-
+Use your custom props in your thanks page or email body by writing `{POST:data.StatusMessage}` in the Peggy Forms editor, in example in the [Form] => [Thanks] body:
+[Screenshot example](https://www.peggyforms.com/app/images/content/sdk-post-value.png)
 [Read more](https://www.peggyforms.com/features/integrations-webhooks-ajax/how-to-integrations-postsubmit#postwebhook)
 
 ```php
@@ -169,9 +182,8 @@ $peggyForms->post->response(
 Price fields are used to collect amounts in your form in a very flexible way.
 With dynamic data you also can collect amounts via your webservices via an HTTP request.
 
-READMORE TODO
-
-SCREENSHOTTODO HOWTO in peggy
+Check this screenshot of the price field settings:
+[Screenshot example](https://www.peggyforms.com/app/images/content/sdk-dynamic-price.png)
 
 ```php
 // Currency is always passed by Peggy Forms, USD / EUR supported by now
@@ -182,12 +194,13 @@ $amount = (int)$peggyForms->get->param("amount", 1);
 
 // Calculate the amount with your own functions
 $price = my_function($amount); // Price should be an integer representing cents
+$price2 = my_function_2($amount); // Price should be an integer representing cents
 
 $peggyForms->response->priceField(
 	true,
 	[
 		new \PeggyForms\Classes\PriceItem("My dynamic item", $price, $amount, $currency),
-		new \PeggyForms\Classes\PriceItem("My dynamic item TAX", $price * .21, 1, $currency)
+		new \PeggyForms\Classes\PriceItem("Administration costs", $price2, 1, $currency)
 	]
 );
 ```
