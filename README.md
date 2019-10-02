@@ -1,9 +1,9 @@
 <img src="https://www.peggyforms.com/app/images/php-sdk.png?2">
 
-Peggy Forms PHP SDK
+Peggy Forms / Peggy Pay PHP SDK
 ========
 
-Use this SDK for easy communication with Peggy Forms.
+Use this SDK for easy communication with Peggy Forms and Peggy Pay.
 
 Install
 -------
