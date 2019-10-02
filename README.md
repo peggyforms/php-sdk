@@ -1,4 +1,4 @@
-<img src="https://www.peggyforms.com/app/images/php-sdk.png">
+<img src="https://www.peggyforms.com/app/images/php-sdk.png?2">
 
 Peggy Forms PHP SDK
 ========
