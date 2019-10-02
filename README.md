@@ -1,4 +1,5 @@
 <img src="https://www.peggyforms.com/app/images/theme/peggyforms/logo.png">
+<img src="https://www.peggyforms.com/app/images/theme/peggyforms/package-professional.png">
 
 Peggy Forms PHP SDK
 ========
