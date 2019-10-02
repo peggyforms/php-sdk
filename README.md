@@ -1,4 +1,4 @@
-<img src="https://cloud.githubusercontent.com/assets/893057/13731118/b7cf0e4e-e987-11e5-942f-13c53d65da35.png">
+<img src="https://www.peggyforms.com/app/images/theme/peggyforms/logo.png">
 
 Peggy Forms PHP SDK
 ========

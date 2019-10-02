@@ -7,3 +7,4 @@ deploy.php
 tests/run.bat
 tests/password
 src/Api.php.original
+commit.bat
