@@ -8,6 +8,7 @@ Use this SDK for easy communication with Peggy Forms and Peggy Pay.
 Install
 -------
 `composer require peggyforms/php-sdk dev-master`
+
 Current version: 1.1.5
 
 Usage
