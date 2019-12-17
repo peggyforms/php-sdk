@@ -8,7 +8,11 @@
 
 			if ($skipZeroValues) {
 				$items = array_values(array_filter($items, function($item) {
-					return !!$item && (int)$item->totalPrice !== 0;
+					if (!$item) return false;
+					if ( $item instanceof Classes\PriceItem && (int)$item->totalPrice <= 0 ) return false;
+					if ( $item instanceof Classes\DiscountItem && (int)$item->discount <= 0 ) return false;
+
+					return true;
 				}));
 			}
 

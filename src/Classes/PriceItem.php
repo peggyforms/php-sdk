@@ -4,6 +4,8 @@
 	class PriceItem {
 		use \PeggyForms\Traits\FormatPrice;
 
+		public $type = "price";
+
 		public function __construct($label, $price, $multiplier, $currency = "EUR", $id = null, $orderBy = null, $isMultiItem = false) {
 			$this->label = $label;
 			$this->price = round($price);

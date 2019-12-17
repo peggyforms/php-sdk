@@ -41,7 +41,17 @@ $hash = $peggyForms->get->param("submissionHash");
 $submission = $peggyForms->submissions->get($hash);
 ```
 
-This is also the way to get the payment status of an order. Payment forms wil have [paymentStatus] and [paymentAmount] added in the submission data.
+Easily get field submitted value:
+```
+$submission->get("fieldName");
+```
+
+This is the way to get the payment status of an order:
+
+```
+$submission->PaymentStatus; // complete/init/error
+$submission->PaymentAmount;
+```
 
 ## Dynamic content
 
@@ -203,6 +213,18 @@ $peggyForms->response->priceField(
 	[
 		new \PeggyForms\Classes\PriceItem("My dynamic item", $price, $amount, $currency),
 		new \PeggyForms\Classes\PriceItem("Administration costs", $price2, 1, $currency)
+	]
+);
+```
+
+To populate a Discount field, use:
+
+```php
+
+$peggyForms->response->priceField(
+	true,
+	[
+		new \PeggyForms\Classes\DiscountItem("My dynamic item", $price, $amount, $currency),
 	]
 );
 ```
