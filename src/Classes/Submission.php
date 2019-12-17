@@ -1,27 +1,24 @@
 <?php
-	namespace PeggyForms\Modules;
+	namespace PeggyForms\Classes;
 
-	use PeggyForms\Classes;
+	class Submission {
+		protected $data;
 
-	class Submissions extends Base {
-		public function get($submissionHash, $autoDecode = true) {
-			$result = $this->api->call("Formbuilder.Submissions.getSubmissionByHash", [ "hash" => $submissionHash ]);
+		const flatProps = ["DateAdded", "PaymentStatus", "PaymentAmount"];
 
-			// if ($autoDecode) {
-			// 	foreach($result->data as $key => &$value) {
-			// 		$jsonValue = json_decode($value);
-	 	// 			if (json_last_error() === JSON_ERROR_NONE) {
-	 	// 				$value = $jsonValue;
-	 	// 			}
-			// 	}
-			// }
+		public function __construct($data) {
+			foreach(self::flatProps as $prop) {
+				if (isset($data->$prop)) {
+					$this->$prop = $data->$prop;
+				}
+			}
 
-			return new Classes\Submission($result->data);
+			$this->data = $data;
 		}
 
-		public function addItem($submissionHash, Classes\SubmissionItem $item) {
-			$result = $this->api->call("Formbuilder.Submissions.addItem", [ "hash" => $submissionHash, "item" => $item ]);
+		public function get($fieldName) {
+			if (!isset($this->data->Items->$fieldName) || !isset($this->data->Items->$fieldName->Value)) return null;
 
-			return $result;
+			return $this->data->Items->$fieldName->Value;
 		}
 	}
