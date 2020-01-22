@@ -165,6 +165,18 @@ $peggyForms->response->ajaxProxy(
 );
 ```
 
+Populate pricefields within ajax proxy:
+
+```
+	$peggyForms->response->ajaxProxy(
+		true,
+		[
+			// See further this document for specifications for price and discount fields
+			"discount" => [ new \PeggyForms\Classes\DiscountItem... ]
+		]
+	);
+```
+
 ### The POST submit action
 
 This example reacts on the POST submit action. The hash of the submission will always be added as 'submissionHash'.
@@ -213,11 +225,13 @@ $price2 = my_function_2($amount); // Price should be an integer representing cen
 $peggyForms->response->priceField(
 	true,
 	[
-		new \PeggyForms\Classes\PriceItem("My dynamic item", $price, $amount, $currency),
-		new \PeggyForms\Classes\PriceItem("Administration costs", $price2, 1, $currency)
+		new \PeggyForms\Classes\PriceItem("My dynamic item", $price, $amount, $currency, "Id"),
+		new \PeggyForms\Classes\PriceItem("Administration costs", $price2, 1, $currency, "AdminCosts")
 	]
 );
 ```
+
+It is highly recommended to fill the Id parameter if possible.
 
 To populate a Discount field, use:
 

@@ -17,7 +17,7 @@
 			$this->settings = (object)parse_ini_file(__DIR__. "/password");
 			$this->auth = base64_encode($this->settings->auth);
 
-			$hash = $this->settings->submissionHash;
+			// $hash = $this->settings->submissionHash;
 			$apiKey = $this->settings->apiKey;
 
 			$this->api = new PeggyForms\Api($apiKey, "http://formbuilder.local.nl/api");

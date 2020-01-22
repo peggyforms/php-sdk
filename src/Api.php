@@ -63,7 +63,9 @@
 		}
 
 		public function call($api, $params) {
-			$params["token"] = $this->accessToken;
+			if (isset($this->accessToken) && isset($this->accessToken->Token)) {
+				$params["token"] = $this->accessToken->Token;
+			}
 
 			$url = "";
 
