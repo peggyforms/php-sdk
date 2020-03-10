@@ -195,8 +195,16 @@ $statusMessage = your_function($field1); // This example function should return 
 
 $peggyForms->post->response(
 	true, // Call succeded?
-	[ "StatusMessage" => $statusMessage ], // Your custom props for usage in the thanks page or email
-	$peggyForms->post->returnAction( // Optional you can change the thankspage to an redirect
+	// Your custom props for usage in the thanks page or email
+	[
+		"StatusMessage" => $statusMessage,
+
+		// And use some data in the CSV export
+		"exportFields" => [ $peggyForms->response->exportColumn("uniqueColumnKey", "Column label", $yourValueForExport ) ]
+	],
+
+	// Optional you can change the thankspage to an redirect
+	$peggyForms->post->returnAction(
 		\PeggForms\Modules\Post::ReturnActionRedirect,
 		"https://www.google.nl"
 	)
