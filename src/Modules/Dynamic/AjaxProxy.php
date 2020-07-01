@@ -3,9 +3,9 @@
 	use \PeggyForms\Classes;
 
 	trait AjaxProxy {
-		public function ajaxProxy($success, $data = null) {
+		public function ajaxProxy(bool $success, $data = null) : void {
 			$props = $this->getHttpProps($success, $data);
 
-			return $this->httpResponse($props);
+			$this->httpResponse($props);
 		}
 	}

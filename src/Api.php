@@ -19,7 +19,14 @@
 		const EndPointPeggyForms = "https://www.peggyforms.com/api";
 		const EndPointPeggyPay = "https://www.peggypay.com/api";
 
+		const Version = "1.1.5";
+
 		public function __construct($apiKey, $endpoint) {
+
+			if (isset($_REQUEST["phpsdklookup"])) {
+				die(json_encode((object)["using" => true,"version" => self::Version]));
+			}
+
 			$this->loadModules();
 
 			$this->apiKey = $apiKey;

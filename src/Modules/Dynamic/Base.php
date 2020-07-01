@@ -2,7 +2,7 @@
 	namespace PeggyForms\Modules\Dynamic;
 
 	trait Base {
-		protected function getHttpProps($success, $props) {
+		protected function getHttpProps(bool $success, $props) : object {
 			// $data = (object)[];
 
 			// $data->data = (object)$props;
@@ -18,11 +18,15 @@
 			return $props;
 		}
 
-		protected function httpResponse($props) {
+		protected function httpResponse(object $props) : string{
 			if (!defined("RunningTest") || !RunningTest) {
+
 				header("X-Performed-By: PeggyForms SDK");
 				header("Content-Type: application/json");
-				echo json_encode($props); exit;
+
+				echo json_encode($props);
+				exit;
+
 			} else {
 				return json_encode($props);
 			}

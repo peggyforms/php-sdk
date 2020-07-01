@@ -3,7 +3,7 @@
 	use \PeggyForms\Classes;
 
 	trait Post {
-		public function post($success, Array $props = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) {
+		public function post(bool $success, Array $props = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) : void {
 			$props = $this->getHttpProps($success, $props);
 
 
@@ -17,14 +17,14 @@
 				$props->exportFields = $exportFields;
 			}
 
-			return $this->httpResponse($props);
+			$this->httpResponse($props);
 		}
 
-		public function postReturnAction($action, $value = null) {
+		public function postReturnAction(string $action, ?string $value = null) : Classes\PostReturnAction {
 			return new Classes\PostReturnAction($action, $value);
 		}
 
-		public function exportColumn($columnKey, $columnName, $columnValue) {
-			return [ "columnKey" => $columnKey, "columnName" => $columnName, "columnValue" => $columnValue ];
+		public function exportColumn(string $columnKey, string $columnName, $columnValue, ?string $columnType = \PeggyForms\Constants\Post::ExportColumnTypeString) : Array {
+			return [ "columnKey" => $columnKey, "columnName" => $columnName, "columnValue" => $columnValue, "columnType" => $columnType ];
 		}
 	}
