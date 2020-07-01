@@ -1,6 +1,6 @@
 <?php
 	/**
-		Version 1.1.5
+		Version 1.1.6
 	*/
 
 	namespace PeggyForms;
@@ -19,7 +19,7 @@
 		const EndPointPeggyForms = "https://www.peggyforms.com/api";
 		const EndPointPeggyPay = "https://www.peggypay.com/api";
 
-		const Version = "1.1.5";
+		const Version = "1.1.6";
 
 		public function __construct($apiKey, $endpoint) {
 
