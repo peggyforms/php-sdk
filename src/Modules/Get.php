@@ -21,7 +21,6 @@
 							yield (object)["name" => $fieldName, "value" => $field["Value"] ];
 						}
 					}
-					break;
 				} else {
 					yield (object)["name" => $fieldName, "value" => $value ];
 				}
