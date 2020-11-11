@@ -1,11 +1,11 @@
 {
     "name": "peggyforms/php-sdk",
-    "description": "PeggyForms PHP SDK",
+    "description": "PeggyPay PHP SDK",
     "license": "proprietary",
     "authors": [
     	{
     		"name": "Wim te Groen",
-    		"email": "wim@peggyforms.com"
+    		"email": "wim@peggypay.com"
     	}
     ],
     "type": "library",

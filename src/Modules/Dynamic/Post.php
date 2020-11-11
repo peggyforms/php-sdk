@@ -3,9 +3,9 @@
 	use \PeggyForms\Classes;
 
 	trait Post {
-		public function post(bool $success, Array $props = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) : void {
+		public function post(bool $success, string $message = null, Array $props = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) : void {
 			$props = $this->getHttpProps($success, $props);
-
+			$props->message = $message;
 
 			if ($returnAction !== null) {
 				// if ($returnAction) throw new \PeggyForms\Exceptions\InvalidFuncParam("return action");

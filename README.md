@@ -9,7 +9,7 @@ Install
 -------
 `composer require peggyforms/php-sdk dev-master`
 
-Current version: 1.1.7
+Current version: 1.1.8
 
 Usage
 --------
@@ -211,21 +211,24 @@ $field1 = $peggyForms->get->param("field1");
 
 $statusMessage = your_function($field1); // This example function should return a string with a message
 
-$peggyForms->post->response(
-	true, // Call succeded?
-	// Your custom props for usage in the thanks page or email
-	[
-		"StatusMessage" => $statusMessage,
+$peggyForms->response->post(
+	// Call succeded?
+		true,
 
-		// And use some data in the CSV export
-		"exportFields" => [ $peggyForms->response->exportColumn("uniqueColumnKey", "Column label", $yourValueForExport ) ]
-	],
+	// Message to show when call failed,
+		$statusMessage,
+
+	// Properties to pass back to your page, to use in your thanks page or email body using {POST:myprop} in this example
+		[ "myprop" => 100 ],
 
 	// Optional you can change the thankspage to an redirect
-	$peggyForms->post->returnAction(
-		\PeggForms\Modules\Post::ReturnActionRedirect,
-		"https://www.google.nl"
-	)
+		$peggyForms->post->returnAction(
+			\PeggForms\Modules\Post::ReturnActionRedirect,
+			"https://www.google.nl"
+		),
+
+	// And use some data in the CSV export
+		[ $peggyForms->response->exportColumn("uniqueColumnKey", "Column label", $yourValueForExport ) ]
 );
 ```
 
