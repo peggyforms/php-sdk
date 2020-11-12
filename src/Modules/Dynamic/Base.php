@@ -18,7 +18,7 @@
 			return $props;
 		}
 
-		protected function httpResponse(object $props) : string{
+		protected function httpResponse(object $props) : string {
 			if (!defined("RunningTest") || !RunningTest) {
 
 				header("X-Performed-By: PeggyForms SDK");

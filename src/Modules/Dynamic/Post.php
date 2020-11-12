@@ -3,10 +3,12 @@
 	use \PeggyForms\Classes;
 
 	trait Post {
-		public function post(bool $success, string $message = null, Array $data = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) : void {
-			$props = $this->getHttpProps($success, [] );
+		public function post(bool $success, string $message = null, Array $data = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) : string {
+			$props = $this->getHttpProps($success, (object)[
+				"data" => $data
+			] );
+
 			$props->message = $message;
-			$props->data = $data;
 
 			if ($returnAction !== null) {
 				// if ($returnAction) throw new \PeggyForms\Exceptions\InvalidFuncParam("return action");
@@ -18,7 +20,7 @@
 				$props->exportFields = $exportFields;
 			}
 
-			$this->httpResponse($props);
+			return $this->httpResponse($props);
 		}
 
 		public function postReturnAction(string $action, ?string $value = null) : Classes\PostReturnAction {

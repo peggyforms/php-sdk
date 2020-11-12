@@ -3,7 +3,7 @@
 	use \PeggyForms\Classes;
 
 	trait Pricefield {
-		public function pricefield(bool $success, Array $items = null, bool $skipZeroValues = true) : void {
+		public function pricefield(bool $success, Array $items = null, bool $skipZeroValues = true) : string {
 			$items = is_array($items) ? $items : [];
 
 			if ($skipZeroValues) {
@@ -22,6 +22,6 @@
 				"items" => $items
 			]);
 
-			$this->httpResponse($props);
+			return $this->httpResponse($props);
 		}
 	}

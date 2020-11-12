@@ -3,12 +3,12 @@
 	use \PeggyForms\Classes;
 
 	trait Validation {
-		public function validation(bool $success, string $validationStatus, string $message = null, $data = null) : void {
+		public function validation(bool $success, string $validationStatus, string $message = null, $data = null) : string {
 			$props = $this->getHttpProps($success, $data);
 
 			$props->result = $validationStatus;
 			$props->message = $message;
 
-			$this->httpResponse($props);
+			return $this->httpResponse($props);
 		}
 	}

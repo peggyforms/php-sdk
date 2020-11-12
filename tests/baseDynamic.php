@@ -35,8 +35,9 @@
 			}
 
 			foreach($urls as $idx => $url) {
-				// echo "\n\n$url\n\n";
+				// echo "\n\n$url\n\n";exit;
 				$jsonResponse = file_get_contents($url);
+				// var_dump($jsonResponse);exit;
 				$this->validate($jsonResponse, $idx);
 			}
 

@@ -3,7 +3,7 @@
 	use \PeggyForms\Classes;
 
 	trait Datagrid {
-		public function datagrid(bool $success, Array $columns, Array $rows = null) : void {
+		public function datagrid(bool $success, Array $columns, Array $rows = null) : string {
 			$columns = is_array($columns) ? $columns : [];
 			$rows = is_array($rows) ? $rows : [];
 
@@ -12,6 +12,6 @@
 				"rows" => $rows
 			]);
 
-			$this->httpResponse($props);
+			return $this->httpResponse($props);
 		}
 	}

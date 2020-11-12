@@ -5,7 +5,7 @@
 
 	class ValidationResponseTest extends baseDynamic {
 		const DynamicUrl = "http://formbuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForValidation";
-		const AjaxUrl = "http://82.73.65.130/formbuilder/posttest/validation.php";
+		const AjaxUrl = "http://localhost/formbuilder/posttest/validation.php";
 		const IdElement = 13191;
 		const ValueValid = "12";
 		const ValueInvalid = "8";
@@ -58,7 +58,6 @@
 
 			$this->assertNoPhpError($json);
 			$this->assertJSONResult($json);
-
 			$this->parseJson($json);
 	  	}
 	}

@@ -3,13 +3,13 @@
 	use \PeggyForms\Classes;
 
 	trait Choicefield {
-		public function choiceField(bool $success, Array $items = null) : void {
+		public function choiceField(bool $success, Array $items = null) : string {
 			$items = is_array($items) ? $items : [];
 
 			$props = $this->getHttpProps($success, (object)[
 				"items" => $items
 			]);
 
-			$this->httpResponse($props);
+			return $this->httpResponse($props);
 		}
 	}
