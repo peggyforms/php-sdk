@@ -1,6 +1,6 @@
 <?php
 	/**
-		Version 1.1.9
+		Version 1.1.10
 	*/
 
 	namespace PeggyForms;

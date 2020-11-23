@@ -9,7 +9,7 @@ Install
 -------
 `composer require peggyforms/php-sdk dev-master`
 
-Current version: 1.1.9
+Current version: 1.1.10
 
 Usage
 --------
