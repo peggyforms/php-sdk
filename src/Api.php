@@ -1,6 +1,6 @@
 <?php
 	/**
-		Version 1.1.8
+		Version 1.1.9
 	*/
 
 	namespace PeggyForms;
@@ -104,5 +104,15 @@
 			}
 
 			return $json;
+		}
+
+		public function cancelOnInit() {
+			$status = $this->get->param("peggy_status");
+
+			if ($status === "init") {
+				$this->response->post(
+					true
+				);
+			}
 		}
 	}

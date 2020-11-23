@@ -9,6 +9,7 @@
 			] );
 
 			$props->message = $message;
+			$props->data = $data;
 
 			if ($returnAction !== null) {
 				// if ($returnAction) throw new \PeggyForms\Exceptions\InvalidFuncParam("return action");

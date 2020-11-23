@@ -9,7 +9,7 @@ Install
 -------
 `composer require peggyforms/php-sdk dev-master`
 
-Current version: 1.1.8
+Current version: 1.1.9
 
 Usage
 --------
@@ -54,6 +54,15 @@ This is the way to get the payment status of an order:
 $submission->PaymentStatus; // complete/init/error
 $submission->PaymentAmount;
 ```
+
+### Upsells
+
+To get all bought upsells of a submission, use:
+```$submission->getUpsells()```
+
+Or if you want to get a purchased upsell by name:
+
+```$submission->getUpsell($yourName)```
 
 ## Dynamic content
 
@@ -135,29 +144,11 @@ $peggyForms->response->validation(
 );
 ```
 
-### Get request and populate response for the Ajax Proxy field
+### Populate the Ajax Proxy field
 
 The Ajax Proxy field can be very useful if you have 1 web service which provides multiple data sets.
 For example, if your API call returns a list of products and a list of countries, the AJAX proxy field is very useful.
 Only 1 HTTP request will be made and all the dependent fields will use this result as data source.
-
-#### Request
-Get all fields from the AjaxProxy request in a field name / value object Iterator:
-
-```php
-$fields = $peggyForms->get->fields();
-
-foreach($fields as $field) {
-	/*
-		object {
-			name,
-			value
-		}
-	*/
-}
-```
-
-#### Response
 
 In this example we use typeless objects, but you can use any JSON-serializable object.
 
