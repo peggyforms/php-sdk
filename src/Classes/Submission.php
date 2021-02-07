@@ -26,6 +26,10 @@
 			return $this->data->Upsells;
 		}
 
+		public function getFormKey() : string {
+			return $this->data->FormKey;
+		}
+
 		public function getUpsell(string $name) : ?Object {
 			foreach($this->data->Upsells as $upsell) {
 				if ($upsell->Name === $name) {
