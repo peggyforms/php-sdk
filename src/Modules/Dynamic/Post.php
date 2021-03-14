@@ -3,9 +3,10 @@
 	use \PeggyForms\Classes;
 
 	trait Post {
-		public function post(bool $success, string $message = null, Array $data = null, Classes\PostReturnAction $returnAction = null, $exportFields = null) : string {
+		public function post(bool $success, string $message = null, Array $data = null, Classes\PostReturnAction $returnAction = null, $exportFields = null, bool $blockOnError = true) : string {
 			$props = $this->getHttpProps($success, (object)[
-				"data" => $data
+				"data" => $data,
+				"blockOnError" => $blockOnError
 			] );
 
 			$props->message = $message;
