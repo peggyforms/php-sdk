@@ -16,10 +16,14 @@
 			$this->data = $data;
 		}
 
-		public function get(string $fieldName) {
-			if (!isset($this->data->Items->$fieldName) || !isset($this->data->Items->$fieldName->Value)) return null;
+		public function getOptionValue($fieldName) {
+			return $this->get($fieldName, "OptionValue");
+		}
 
-			return $this->data->Items->$fieldName->Value;
+		public function get($fieldName, $prop = "Value") {
+			if (!isset($this->data->Items->$fieldName) || !isset($this->data->Items->$fieldName->$prop)) return null;
+
+			return $this->data->Items->$fieldName->$prop;
 		}
 
 		public function getUpsells() : Array {
