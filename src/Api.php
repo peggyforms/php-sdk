@@ -37,6 +37,17 @@
 				"base_uri" => $endpoint
 			]);
 
+			$this->submissionHash = $this->get->param("submissionHash");
+			$this->postStatus = $this->get->param("peggy_status");
+		}
+
+		private function loadModules() {
+			$this->submissions = new Modules\Submissions($this);
+			$this->response = new Modules\Response($this);
+			$this->get = new Modules\Get($this);
+		}
+
+		protected function authorize() {
 			$url = "";
 
 			$response = $this->client->request("GET", "Framework.authorize", [
@@ -63,13 +74,9 @@
 			$this->accessToken = $result->data;
 		}
 
-		private function loadModules() {
-			$this->submissions = new Modules\Submissions($this);
-			$this->response = new Modules\Response($this);
-			$this->get = new Modules\Get($this);
-		}
-
 		public function call($api, $params) {
+			if (!isset($this->accessToken) || !isset($this->accessToken->Token)) $this->authorize();
+
 			if (isset($this->accessToken) && isset($this->accessToken->Token)) {
 				$params["token"] = $this->accessToken->Token;
 			}

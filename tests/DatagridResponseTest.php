@@ -4,7 +4,7 @@
 	use PeggyForms\Exceptions;
 
 	class DatagridResponseTest extends baseDynamic {
-		const DynamicUrl = "http://formbuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForDynamic";
+		const DynamicUrl = "http://paybuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForDynamic";
 		const AjaxUrl = "http://localhost/formbuilder/posttest/datagrid.php";
 		const IdElement = 13193;
 		const Columns = "columns[*]";

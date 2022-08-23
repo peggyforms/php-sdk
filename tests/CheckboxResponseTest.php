@@ -4,7 +4,7 @@
 	use PeggyForms\Exceptions;
 
 	class CheckboxResponseTest extends baseDynamic {
-		const DynamicUrl = "http://formbuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForDynamic";
+		const DynamicUrl = "http://paybuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForDynamic";
 		const AjaxUrl = "http://localhost/formbuilder/posttest/checkbox.php";
 		const IdElement = 13192;
 		const DataPath = "data[*]";

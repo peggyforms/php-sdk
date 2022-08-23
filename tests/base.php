@@ -13,14 +13,14 @@
 
 	class base extends TestCase {
 
-		protected function setUp() {
+		protected function setUp() : void {
 			$this->settings = (object)parse_ini_file(__DIR__. "/password");
 			$this->auth = base64_encode($this->settings->auth);
 
 			// $hash = $this->settings->submissionHash;
 			$apiKey = $this->settings->apiKey;
 
-			$this->api = new PeggyForms\Api($apiKey, "http://formbuilder.local.nl/api");
+			$this->api = new PeggyForms\Api($apiKey, "http://paybuilder.local.nl/api");
 		}
 
 		// Formbuilder methods

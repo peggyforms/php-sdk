@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"CheckboxResponseTest::testCheckboxResponse":0.509,"DatagridResponseTest::testDatagridResponse":0.424,"PostResponseTest::testPostResonse":0.419,"SubmissionTest::testGetSubmission":0.556,"ValidationResponseTest::testValidationResponse":0.944}}

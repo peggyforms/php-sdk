@@ -4,7 +4,7 @@
 	use PeggyForms\Exceptions;
 
 	class ValidationResponseTest extends baseDynamic {
-		const DynamicUrl = "http://formbuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForValidation";
+		const DynamicUrl = "http://paybuilder.local.nl/api/Formbuilder.Dynamic.getJsonDataForValidation";
 		const AjaxUrl = "http://localhost/formbuilder/posttest/validation.php";
 		const IdElement = 13191;
 		const ValueValid = "12";
