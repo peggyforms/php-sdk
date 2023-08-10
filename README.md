@@ -1,35 +1,35 @@
-<img src="https://www.peggyforms.com/app/images/php-sdk.png?6">
+<img src="https://www.peggyforms.com/app/images/php-sdk.png?7">
 
-Peggy Forms / Peggy Pay PHP SDK
+Peggy Pay PHP SDK
 ========
 
-Use this SDK for easy communication with Peggy Forms and Peggy Pay.
+Use this SDK for easy communication with Peggy Pay.
 
 Install
 -------
 `composer require peggyforms/php-sdk dev-master`
 
-Current version: 1.1.11
+Current version: 1.1.14
 
 Usage
 --------
 
 ## Init
 
-You have to start always by initialize the PeggyForms object with your API key.
+You have to start always by initialize the PeggyPay object with your API key.
 You can find your API key [in your account](https://www.peggyforms.com/account#apikeys)
 
 ```php
 require "vendor/autoload.php";
 
-$peggyForms = new PeggyForms\Api("myApiKey", PeggyForms::EndPointPeggyForms);
+$peggyPay = new PeggyForms\Api("myApiKey");
 ```
 
 ### Endpoints:
 | Product  | Endpoint constant |
 | ------------- | ------------- |
-| PeggyForms | PeggyForms\EndPointPeggyForms |
 | PeggyPay | PeggyForms\EndPointPeggyPay |
+| PeggyForms | PeggyForms\EndPointPeggyForms |
 
 ## Get submission by hash
 
@@ -37,10 +37,10 @@ Easily get a submission by its Hash code.
 
 ```php
 // Get the HTTP request param
-$hash = $peggyForms->get->param("submissionHash");
+$hash = $peggyPay->get->param("submissionHash");
 
 // And get the submission
-$submission = $peggyForms->submissions->get($hash);
+$submission = $peggyPay->submissions->get($hash);
 ```
 
 Easily get field submitted value:
@@ -71,12 +71,10 @@ For plans with AJAX / HTTP features you can:
 - create custom field validation
 - respond to the POST submit action
 
-[Read more](https://www.peggyforms.com/features/integrations-webhooks-ajax/how-to-integrations-postsubmit)
-
 ### Choicefields
 
 ```php
-$peggyForms->response->choiceField(
+$peggyPay->response->choiceField(
 	true, // Call succeded?
 	[
 		new \PeggyForms\Classes\ListItem(1, "My dynamic option 1"),
@@ -87,7 +85,7 @@ $peggyForms->response->choiceField(
 
 ### Datagrid
 ```php
-$peggyForms->response->dataGrid(
+$peggyPay->response->dataGrid(
 	true, // Call succeded?
 	[ // The columns
 		new \PeggyForms\Classes\GridColumn("My grid column 1"),
@@ -112,19 +110,18 @@ $peggyForms->response->dataGrid(
 ### Validation
 
 You can validate your form fields using the default validation tools in the editor.
-When you need custom valdation, you can use [Javascript](https://www.peggyforms.com/features/javascript-api#validation).
+When you need custom valdation, you can use [Javascript](https://www.peggypay.com/kennisbank/overig/js-api/introductie).
 Or you can setup to validate via an HTTP request. This example is for validating a field via an HTTP request.
 
-[Screenshot example](https://www.peggyforms.com/app/images/content/sdk-validation.png)
-[Read more](https://www.peggyforms.com/features/inputvalidation)
+[Read more](https://www.peggypay.com/kennisbank/overig/js-api/introductie)
 
 ```php
 // Value of the field with the validation
-$value = $peggyForms->get->param("value");
+$value = $peggyPay->get->param("value");
 
 // Other fields you added as parameters
-$yourFormField1 = $peggyForms->get->param("formfield-1-name");
-$yourFormField2 = $peggyForms->get->param("formfield-2-name");
+$yourFormField1 = $peggyPay->get->param("formfield-1-name");
+$yourFormField2 = $peggyPay->get->param("formfield-2-name");
 
 $validated = your_function($value, $yourFormField1, $yourFormField2);
 
@@ -136,7 +133,7 @@ if ($validated === true) {
 	$status = \PeggyForms\Constants\Validation::INIT;
 }
 
-$peggyForms->response->validation(
+$peggyPay->response->validation(
 	true, // Call succeded
 	$status,
 	"My nice custom response message",
@@ -153,7 +150,7 @@ Only 1 HTTP request will be made and all the dependent fields will use this resu
 In this example we use typeless objects, but you can use any JSON-serializable object.
 
 ```php
-$peggyForms->response->ajaxProxy(
+$peggyPay->response->ajaxProxy(
 	true,
 	[
 		"products" => [
@@ -177,32 +174,31 @@ $peggyForms->response->ajaxProxy(
 Populate pricefields within ajax proxy:
 
 ```
-	$peggyForms->response->ajaxProxy(
-		true,
-		[
-			// See further this document for specifications for price and discount fields
-			"discount" => [ new \PeggyForms\Classes\DiscountItem... ]
-		]
-	);
+$peggyPay->response->ajaxProxy(
+	true,
+	[
+		// See further this document for specifications for price and discount fields
+		"discount" => [ new \PeggyForms\Classes\DiscountItem... ]
+	]
+);
 ```
 
 ### The POST submit action
 
 This example reacts on the POST submit action. The hash of the submission will always be added as 'submissionHash'.
 
-Use your custom props in your thanks page or email body by writing `{POST:data.StatusMessage}` in the Peggy Forms editor, in example in the [Form] => [Thanks] body:
-[Screenshot example](https://www.peggyforms.com/app/images/content/sdk-post-value.png)
-[Read more](https://www.peggyforms.com/features/integrations-webhooks-ajax/how-to-integrations-postsubmit#postwebhook)
+Use your custom props in your thanks page or email body by writing `{POST:data.StatusMessage}` in the Peggy Pay editor, in example in the [Form] => [Thanks] body:
+[Read more](https://www.peggypay.com/kennisbank/apps/webhooks/introductie)
 
 ```php
 
-$submissionHash = $peggyForms->get->param("submissionHash");
-$field1 = $peggyForms->get->param("field1");
+$submissionHash = $peggyPay->get->param("submissionHash");
+$field1 = $peggyPay->get->param("field1");
 // ...
 
 $statusMessage = your_function($field1); // This example function should return a string with a message
 
-$peggyForms->response->post(
+$peggyPay->response->post(
 	// Call succeded?
 		true,
 
@@ -213,13 +209,13 @@ $peggyForms->response->post(
 		[ "myprop" => 100 ],
 
 	// Optional you can change the thankspage to an redirect
-		$peggyForms->post->returnAction(
+		$peggyPay->post->returnAction(
 			\PeggForms\Modules\Post::ReturnActionRedirect,
 			"https://www.google.nl"
 		),
 
 	// And use some data in the CSV export
-		[ $peggyForms->response->exportColumn("uniqueColumnKey", "Column label", $yourValueForExport ) ]
+		[ $peggyPay->response->exportColumn("uniqueColumnKey", "Column label", $yourValueForExport ) ]
 );
 ```
 
@@ -229,20 +225,19 @@ Price fields are used to collect amounts in your form in a very flexible way.
 With dynamic data you also can collect amounts via your webservices via an HTTP request.
 
 Check this screenshot of the price field settings:
-[Screenshot example](https://www.peggyforms.com/app/images/content/sdk-dynamic-price.png)
 
 ```php
-// Currency is always passed by Peggy Forms, USD / EUR supported by now
-$currency = $peggyForms->get->param("currency", "EUR");
+// Currency is always passed by Peggy Pay, USD / EUR supported by now
+$currency = $peggyPay->get->param("currency", "EUR");
 
-// Optioanlly get some params from Peggy Forms
-$amount = (int)$peggyForms->get->param("amount", 1);
+// Optioanlly get some params from Peggy Pay
+$amount = (int)$peggyPay->get->param("amount", 1);
 
 // Calculate the amount with your own functions
 $price = my_function($amount); // Price should be an integer representing cents
 $price2 = my_function_2($amount); // Price should be an integer representing cents
 
-$peggyForms->response->priceField(
+$peggyPay->response->priceField(
 	true,
 	[
 		new \PeggyForms\Classes\PriceItem("My dynamic item", $price, $amount, $currency, "Id"),
@@ -257,7 +252,7 @@ To populate a Discount field, use:
 
 ```php
 
-$peggyForms->response->priceField(
+$peggyPay->response->priceField(
 	true,
 	[
 		new \PeggyForms\Classes\DiscountItem("My dynamic item", $price, $amount, $currency),

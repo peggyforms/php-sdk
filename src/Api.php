@@ -1,6 +1,6 @@
 <?php
 	/**
-		Version 1.1.13
+		Version 1.1.14
 	*/
 
 	namespace PeggyForms;
@@ -19,9 +19,9 @@
 		const EndPointPeggyForms = "https://www.peggyforms.com/api";
 		const EndPointPeggyPay = "https://www.peggypay.com/api";
 
-		const Version = "1.1.13";
+		const Version = "1.1.14";
 
-		public function __construct($apiKey, $endpoint) {
+		public function __construct($apiKey, string $endpoint = null) {
 
 			if (isset($_REQUEST["phpsdklookup"])) {
 				die(json_encode((object)["using" => true,"version" => self::Version]));
@@ -31,6 +31,7 @@
 
 			$this->apiKey = $apiKey;
 
+			if ($endpoint === null) $endpoint = self::EndPointPeggyPay;
 			$endpoint = rtrim($endpoint, "/"). "/";
 
 			$this->client = new Client([

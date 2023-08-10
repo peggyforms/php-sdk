@@ -71,7 +71,7 @@
 				// 	if ($value["totalPrice"] > 0) return true;
 				// 	break;
 				case "product":
-					if (empty($value)) return false;
+					if (empty($value) || !is_array($value)) return false;
 					return intVal($value["amount"]);
 				// case "checkbox":
 				// 	if (empty($value)) return false;
