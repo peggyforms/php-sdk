@@ -72,6 +72,7 @@
 				// 	break;
 				case "product":
 					if (empty($value) || !is_array($value)) return false;
+					if (!isset($value["amount"])) return false; // MY_SPECIAL_DO_NOT_INCLUDE
 					return intVal($value["amount"]);
 				// case "checkbox":
 				// 	if (empty($value)) return false;
