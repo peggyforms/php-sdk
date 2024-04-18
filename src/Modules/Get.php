@@ -58,6 +58,8 @@
 				case "tiles":
 				case "niceChoice": // todo radio etc?
 					return !empty($value);
+				case "radio":
+					return !empty($value) && isset($value["value"]) && is_array($value["value"]);
 			}
 
 			return false;
@@ -88,6 +90,8 @@
 				case "tiles":
 				case "niceChoice": // todo radio etc?
 					return !empty($value) ? 1 : 0;
+				case "radio":
+					return isset($value["value"]) && is_array($value["value"]) ? count($value["value"]) : 0;
 			}
 
 			return false;
