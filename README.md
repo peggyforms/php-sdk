@@ -9,15 +9,15 @@ Install
 -------
 `composer require peggyforms/php-sdk dev-master`
 
-Current version: 1.1.14
+Current version: 1.1.17
 
-Usage
+Basic Usage
 --------
 
 ## Init
 
 You have to start always by initialize the PeggyPay object with your API key.
-You can find your API key [in your account](https://www.peggyforms.com/account#apikeys)
+You can find your API key [in your account](https://www.peggyforms.com/account/api-keys)
 
 ```php
 require "vendor/autoload.php";
@@ -25,19 +25,13 @@ require "vendor/autoload.php";
 $peggyPay = new PeggyForms\Api("myApiKey");
 ```
 
-### Endpoints:
-| Product  | Endpoint constant |
-| ------------- | ------------- |
-| PeggyPay | PeggyForms\EndPointPeggyPay |
-| PeggyForms | PeggyForms\EndPointPeggyForms |
-
 ## Get submission by hash
 
-Easily get a submission by its Hash code.
+Easily get a submission by its Hash code. Every redirect of Peggy Pay sends the submission hash in the parametere: peggyHash
 
 ```php
 // Get the HTTP request param
-$hash = $peggyPay->get->param("submissionHash");
+$hash = $peggyPay->get->param("peggyHash");
 
 // And get the submission
 $submission = $peggyPay->submissions->get($hash);
@@ -55,16 +49,7 @@ $submission->PaymentStatus; // complete/init/error
 $submission->PaymentAmount;
 ```
 
-### Upsells
-
-To get all bought upsells of a submission, use:
-```$submission->getUpsells()```
-
-Or if you want to get a purchased upsell by name:
-
-```$submission->getUpsell($yourName)```
-
-## Dynamic content
+## ADVANCED usage - Dynamic content
 
 For plans with AJAX / HTTP features you can:
 - populate choicefields, lists, ajax proxy and datagrids.
