@@ -1,6 +1,7 @@
 <?php
 	namespace PeggyForms\Classes;
 
+	#[\AllowDynamicProperties]
 	class Submission {
 		protected $data;
 

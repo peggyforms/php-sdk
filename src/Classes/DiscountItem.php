@@ -6,6 +6,15 @@
 
 		public $type = "discount";
 
+		public $id;
+		public $label;
+		public $amount;
+		public $currency;
+		public $orderBy;
+		public $discount;
+		public $basePriceAmountType;
+		public $multiplier;
+
 		public function __construct($label, $amount, $currency = "EUR", $id = null, $orderBy = null) {
 			$this->label = $label;
 

@@ -6,6 +6,16 @@
 
 		public $type = "price";
 
+		public $id;
+		public $label;
+		public $price;
+		public $totalPrice;
+		public $multiplier;
+		public $currency;
+		public $isMultiItem;
+		public $priceFormatted;
+		public $orderBy;
+
 		public function __construct($label, $price, $multiplier, $currency = "EUR", $id = null, $orderBy = null, $isMultiItem = false) {
 			$this->label = $label;
 			$this->price = round($price);
