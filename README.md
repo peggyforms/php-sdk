@@ -114,30 +114,6 @@ $peggyPay->response->choiceField(
 );
 ```
 
-### Datagrid
-```php
-$peggyPay->response->dataGrid(
-	true, // Call succeded?
-	[ // The columns
-		new \PeggyForms\Classes\GridColumn("My grid column 1"),
-		new \PeggyForms\Classes\GridColumn("My grid column 2"),
-		new \PeggyForms\Classes\GridColumn("My grid column 3")
-	],
-	[ // And the rows with items
-		[
-			new \PeggyForms\Classes\GridRowItem("Col row 1 value 1"),
-			new \PeggyForms\Classes\GridRowItem("Col row 1 value 2"),
-			new \PeggyForms\Classes\GridRowItem("Col row 1 value 3"),
-		],
-		[
-			new \PeggyForms\Classes\GridRowItem("Col row 2value 1"),
-			new \PeggyForms\Classes\GridRowItem("Col row 2value 2"),
-			new \PeggyForms\Classes\GridRowItem("Col row 2value 3"),
-		]
-	]
-);
-```
-
 ### Validation
 
 You can validate your form fields using the default validation tools in the editor.
