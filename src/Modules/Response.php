@@ -10,4 +10,5 @@
 		use Dynamic\Post;
 		use Dynamic\Pricefield;
 		use Dynamic\Validation;
+		use Dynamic\Webhook;
 	}

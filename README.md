@@ -51,7 +51,7 @@ $submission->PaymentAmount;
 
 ## Get order by hash
 
-Easily get a order with orderlines by submissionhash or orderhash. Use [Webhooks](https://www.peggypay.com/kennisbank/apps/webhooks/introductie) for this.
+Easily get a order with orderlines by submissionhash or orderhash.
 
 ```php
 // Get the HTTP request param
@@ -93,7 +93,12 @@ PeggyForms\Classes\Order Object
 )
 ```
 
-This can be used to connect your Peggy Pay to your accounting software.
+This can be used to connect your Peggy Pay to your accounting software. Use [Webhooks](https://www.peggypay.com/kennisbank/apps/webhooks/introductie) for this.
+
+Always return the proper respone to webhooks:
+```php
+	$peggyPay->response->webhook(true);
+```
 
 ## ADVANCED usage - Dynamic content
 
