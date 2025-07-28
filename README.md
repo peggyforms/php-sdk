@@ -97,7 +97,7 @@ This can be used to connect your Peggy Pay to your accounting software. Use [Web
 
 Always return the proper respone to webhooks:
 ```php
-	$peggyPay->response->webhook(true);
+$peggyPay->response->webhook(true);
 ```
 
 ## ADVANCED usage - Dynamic content
