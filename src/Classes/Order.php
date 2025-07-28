@@ -33,6 +33,7 @@
 			}
 
 			$this->OrderLines = array_map([$this, "mapOrderLine"], $this->OrderLines);
+			$this->Customer = new Customer($this->Customer);
 		}
 
 		protected function mapOrderLine(object $orderLine) : OrderLine {
