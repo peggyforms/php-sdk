@@ -1,6 +1,6 @@
 <?php
 	/**
-		Version 1.1.18
+		Version 1.2.0
 	*/
 
 	namespace PeggyForms;
@@ -19,7 +19,7 @@
 		const EndPointPeggyForms = "https://www.peggyforms.com/api";
 		const EndPointPeggyPay = "https://www.peggypay.com/api";
 
-		const Version = "1.1.18";
+		const Version = "1.2.0";
 
 		public $submissions;
 		public $response;
@@ -50,6 +50,7 @@
 
 		private function loadModules() {
 			$this->submissions = new Modules\Submissions($this);
+			$this->orders = new Modules\Orders($this);
 			$this->response = new Modules\Response($this);
 			$this->get = new Modules\Get($this);
 		}
@@ -107,6 +108,8 @@
 		}
 
 		protected function validateApiResult($api, $responseBody, $url) {
+			if (isset($_REQUEST["debug"])) echo "\n\n$url\n\n";
+
 			$json = json_decode($responseBody);
 
 			if (!$json) {

@@ -38,16 +38,62 @@ $submission = $peggyPay->submissions->get($hash);
 ```
 
 Easily get field submitted value:
-```
+```php
 $submission->get("fieldName");
 ```
 
 This is the way to get the payment status of an order:
 
-```
+```php
 $submission->PaymentStatus; // complete/init/error
 $submission->PaymentAmount;
 ```
+
+## Get order by hash
+
+Easily get a order with orderlines by submissionhash or orderhash. Use [Webhooks](https://www.peggypay.com/kennisbank/apps/webhooks/introductie) for this.
+
+```php
+// Get the HTTP request param
+$hash = $peggyPay->get->param("peggyHash");
+
+// And get the order
+$order = $peggyPay->orders->getBySubmissionHash($hash);
+```
+
+The response:
+```php
+PeggyForms\Classes\Order Object
+(
+    [PaymentType] => onetime
+    ...
+    [Amount] => 2198
+    [AmountEx] => 1817
+    [AmountVat] => 381
+    [VatAmount] => 21
+    [IsIncVat] => 1
+    [IsVatShifted] => 0
+    [Description] => SDK get order
+    ...
+    [OrderLines] => Array
+        (
+            [0] => PeggyForms\Classes\OrderLine Object
+                (
+                    [Description] => Clone bug
+                    [Quantity] => 1
+                    [Amount] => 1999
+                    [AmountEx] => 1652.07
+                    [AmountTax] => 346.93
+                    [Tax] => 21
+                    [IdTax] => 2
+                    [IsTaxFree] => 0
+                )
+                ...
+        )
+)
+```
+
+This can be used to connect your Peggy Pay to your accounting software.
 
 ## ADVANCED usage - Dynamic content
 
