@@ -1,6 +1,6 @@
 <?php
 	/**
-		Version 1.1.18
+		Version 1.2.0
 	*/
 
 	namespace PeggyForms;
@@ -19,9 +19,10 @@
 		const EndPointPeggyForms = "https://www.peggyforms.com/api";
 		const EndPointPeggyPay = "https://www.peggypay.com/api";
 
-		const Version = "1.1.18";
+		const Version = "1.2.0";
 
 		public $submissions;
+		public $orders;
 		public $response;
 		public $get;
 		public $submissionHash;
