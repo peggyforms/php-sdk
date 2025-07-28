@@ -9,7 +9,7 @@ Install
 -------
 `composer require peggyforms/php-sdk dev-master`
 
-Current version: 1.1.18
+Current version: 1.2.0
 
 Basic Usage
 --------
@@ -51,7 +51,7 @@ $submission->PaymentAmount;
 
 ## Get order by hash
 
-Easily get a order with orderlines by submissionhash or orderhash.
+Easily get an order with orderlines by submissionhash or orderhash.
 
 ```php
 // Get the HTTP request param
