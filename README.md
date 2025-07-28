@@ -27,7 +27,7 @@ $peggyPay = new PeggyForms\Api("myApiKey");
 
 ## Get submission by hash
 
-Easily get a submission by its Hash code. Every redirect of Peggy Pay sends the submission hash in the parametere: peggyHash
+Get a submission by its Hash code. Every redirect of Peggy Pay sends the submission hash in the parametere: peggyHash
 
 ```php
 // Get the HTTP request param
@@ -37,7 +37,7 @@ $hash = $peggyPay->get->param("peggyHash");
 $submission = $peggyPay->submissions->get($hash);
 ```
 
-Easily get field submitted value:
+Get field submitted value:
 ```php
 $submission->get("fieldName");
 ```
@@ -51,7 +51,7 @@ $submission->PaymentAmount;
 
 ## Get order by hash
 
-Easily get an order with orderlines by submissionhash or orderhash.
+Get an order with orderlines by submissionhash or orderhash.
 
 ```php
 // Get the HTTP request param
